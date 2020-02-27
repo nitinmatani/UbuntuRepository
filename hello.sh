@@ -411,12 +411,206 @@ count=10
 # Hello
 # quit
 
+# Local variables
+
+# function print(){
+#      name=$1
+#     echo "the name is $name "
+# }
+
+# name="Tom"
+
+# echo "The name is $name: Before"
+
+# print Max
+
+# echo "The name is $name: After"
 
 
+# function print(){
+#     local name=$1
+#     echo "the name is $name "
+# }
+
+# name="Tom"
+
+# echo "The name is $name: Before"
+
+# print Max
+
+# echo "The name is $name: After"
 
 
+#Function example
+
+# usage(){
+#     echo "You need to provide and argument : "
+#     echo "usage : $0 file_name"
+# }
+
+# is_file_exist(){
+#     local file="$1"
+#     [[ -f "$file" ]] && return 0 || return 1
+
+# }
+
+# [[ $# -eq 0 ]] && usage
+
+# if ( is_file_exist "$1" )
+# then
+#     echo "File found"
+# else
+#     echo "File not found"
+# fi
+
+# Readonly command
+
+# var=31
+# readonly var
+
+# var=50
+# echo "var => $var"
+
+# hello(){
+
+#     echo "Hello World"
+# }
+
+# readonly -f hello
+
+# #Cant overide the function
+# hello(){
+#     echo "Hello World again"
+# }
+
+#List of readonly variables
+# readonly -p
+
+# List of readonly functions
+#readonly -f
 
 
+#Signals and Traps
+
+# echo "pid is $$"
+# while (( COUNT < 10 ))
+# do  
+#     sleep 10
+#     (( COUNT ++ ))
+#     echo $COUNT
+# done
+# exit 0
+
+# trap "echo Exit command is detected" 0
+# echo "Hello World"
+# exit 0
+
+# trap "echo Exit signal is detected" SIGINT
+# echo "pid is $$"
+# while (( COUNT < 10 ))
+# do  
+#     sleep 10
+#     (( COUNT ++ ))
+#     echo $COUNT
+# done
+# exit 0
+
+#How to debug a bash script
+
+# set -x  #Start debugging from this point you have written
+# trap "echo Exit signal is detected" SIGINT
+# echo "pid is $$"
+# set +x  #deactivates the debugging
+# while (( COUNT < 10 ))
+# do  
+#     sleep 10
+#     (( COUNT ++ ))
+#     echo $COUNT
+# done
+# exit 0
 
 
+#Show all variables in system
+#declare -p
+
+#creates your variable
+#declare myvariabl=22
+
+#Readonly variable
+# declare -r pwdfile=/etc/password
+# echo $pwdfile
+
+#Sending email via script
+# First install ssmtp
+#sudo apt install ssmtp
+#Do the changes in /etc/ssmtp/ssmtp.conf file below details
+
+#root=nitinmatani22@gmail.com
+# mailhub=smtp.gmail.com:587
+# AuthUser=nitinmatani22@gmail.com
+# AuthPass=
+# UseSTARTTLS=yes
+
+#after this change the settings in your google account enable Less Secure app access to on from security tab
+#ssmtp nitinmatani22@gmail.com
+
+#Now run the script and give 
+#To:nitinmatani22@gmail.com
+#From:nitinmatani22@gmail.com
+#CC:
+#Subject:Test
+#This is body
+#Press Ctrl +D  you will recieve mail
+
+#grep
+
+# echo "Enter filename to search text from"
+# read filename
+
+# if [[ -f $filename ]]
+# then
+#     echo "Enter the text to search"
+#     read grepvar
+#     grep -i -n -c -v $grepvar $filename # -i to remove case sensitivity,-n line number, -c number of occurences of letter, -v -number of lines which doesnt contain the word entered
+# else
+#     echo "$filename doesn't exist"
+
+# fi
+
+
+#awk -Scripting language for manipulating data and generating reports 
+#It is utility which can be used in bash to write tiny programs
+#You can scan a file by line,You can split each input line into fields,actions on matched lines 
+#awk transforms data files and produces reports
+#it can be used with bash script and also as a separate awk file
+
+# echo "Enter filename to print from awk"
+# read filename
+
+# if [[ -f $filename ]]
+# then
+#     #awk '{print}' $filename
+#     #awk '/Windows/ {print}' $filename
+#     #awk '/Windows/ {print $2,$1}' $filename #Prints 2nd and 1st word of lines which contains Window
+
+# else
+#     echo "$filename doesn't exist"
+
+# fi 
+
+
+#sed -Stream editor and used for maniputaing text files and subsituting purposes
+# echo "Enter filename to subsitute using sed"
+# read filename
+
+# if [[ -f $filename ]]
+# then
+#      #cat sedfile.txt | sed 's/i/I/g'  # s-subsitute  i is the letter to be subsituted with I ,g is for global replaces all occurences of i to I
+#      #sed 's/i/I/g' $filename #this just gives the output it doesnt actually do changes in the file
+#      #sed 's/i/I/g' $filename > newsedfile.txt # this does the changes nd copies in new file
+#     #sed -i 's/i/I/g' $filename  #Modifies the file and you cant undo it by providing a flag -i
+# else
+#     echo "$filename doesn't exist"
+
+# fi 
 
